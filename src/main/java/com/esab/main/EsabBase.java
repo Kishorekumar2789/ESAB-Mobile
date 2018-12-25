@@ -2,6 +2,7 @@ package com.esab.main;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -14,6 +15,8 @@ public class EsabBase {
 	
 	@Test
 	public static void esablaunch() throws MalformedURLException{
+		
+		
 		AndroidDriver<MobileElement> driver;
 		DesiredCapabilities cap=new DesiredCapabilities();
 		cap.setCapability("deviceName", "OnePlus 6");
@@ -25,6 +28,7 @@ public class EsabBase {
 		
 		driver=new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 		
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	}
 	
 	
